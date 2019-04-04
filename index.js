@@ -1,19 +1,37 @@
-let name = document.querySelector("#exampleInputName");
-let gender = document.querySelectorAll("#form-user-create [name=gender]:checked");
-let birth = document.querySelector("#exampleInputBirth");
-let country = document.querySelector("#exampleInputCountry");
-let email = document.querySelector("#exampleInputEmail");
-let password = document.querySelector("#exampleInputPassword");
-let photo = document.querySelector("#exampleInputFile");
-let admin = document.querySelector("#exampleInputAdmin");
-
-
-
 let fields = document.querySelectorAll("#form-user-create [name]");
+// Exemplo feito em aula.
+fields.forEach((field, index)=>{
+    if(field.name == "gender"){
+        if(field.checked === true){
+            console.log("Sim.", field.name, index);
+        }else{
+            console.log();
+        };
+       
+    }else{
+        console.log("Não.", field.name, index);
+    };
+});
 
-fields.forEach(function(field, index){
+//Exemplo feito em testes
+/*
+fields.forEach((field, index)=>{
 
-    console.log(field.name, field.id, index);
-    
+    if (field.name == "gender"){
+        if (field.checked === true){
+            console.log("Sim", index, field.name, field.id);
+        }else{
+
+        }
+    }else{
+
+    }
+
+    if (field.name !== "gender"){
+    console.log("Não", index, field.name, field.id);
+    }else{
+
+    }    
 
 });
+*/
