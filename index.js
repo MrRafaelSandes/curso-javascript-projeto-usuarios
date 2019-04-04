@@ -1,37 +1,55 @@
 let fields = document.querySelectorAll("#form-user-create [name]");
-// Exemplo feito em aula.
-fields.forEach((field, index)=>{
-    if(field.name == "gender"){
-        if(field.checked === true){
-            console.log("Sim.", field.name, index);
-        }else{
-            console.log();
+let user = {};
+
+function addLine(dataUser) {
+
+    console.log(dataUser);
+    
+
+    document.getElementById("table-user").innerHTML =
+
+        `
+            <tr>
+                <td><img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle img-sm"></td>
+                <td>${dataUser.name}</td>
+                <td>${dataUser.email}</td>
+                <td>${dataUser.admin}</td>
+                <td>${dataUser.gender}</td>
+                <td>${dataUser.birth}</td>
+                <td>${dataUser.country}</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-xs btn-flat">Editar</button>
+                    <button type="button" class="btn btn-danger btn-xs btn-flat">Excluir</button>
+                </td>
+            </tr>
+        `
+
+};
+
+document.getElementById("form-user-create").addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    fields.forEach((field, index) => {
+
+        if (field.name == "gender") {
+
+            if (field.checked) {
+
+                user[field.name] = field.value;
+
+            };
+
+        } else {
+
+            user[field.name] = field.value;
+
         };
-       
-    }else{
-        console.log("Não.", field.name, index);
-    };
-});
 
-//Exemplo feito em testes
-/*
-fields.forEach((field, index)=>{
+    });
 
-    if (field.name == "gender"){
-        if (field.checked === true){
-            console.log("Sim", index, field.name, field.id);
-        }else{
+    let objectUser = new User(user.name, user.gender, user.birth, user.country, user.email, user.password, user.photo, user.admin);
 
-        }
-    }else{
-
-    }
-
-    if (field.name !== "gender"){
-    console.log("Não", index, field.name, field.id);
-    }else{
-
-    }    
+    addLine(objectUser);
 
 });
-*/
